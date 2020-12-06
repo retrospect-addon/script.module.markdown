@@ -8,6 +8,9 @@
         <import addon="xbmc.python" version="2.26.0" />
     </requires>
 
+    <!--extension point="xbmc.python.script" library="test.py">
+        <provides>executable</provides>
+    </extension-->
     <extension point="xbmc.python.module" library="libs" />
 
     <extension point="xbmc.addon.metadata">

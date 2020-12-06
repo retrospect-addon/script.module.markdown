@@ -15,8 +15,8 @@ def to_kodi(text):
     """
 
     conversions = [
-        (r"^# (.+)$", r"[BOLD][LIGHT][UPPERCASE]\1[/UPPERCASE][/LIGHT][/BOLD]"),  # Heading 1
-        (r"^## (.+)$", r"[BOLD][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/BOLD]"),  # Heading 2
+        (r"^# (.+)$", r"[B][LIGHT][UPPERCASE]\1[/UPPERCASE][/LIGHT][/B]"),  # Heading 1
+        (r"^## (.+)$", r"[B][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/B]"),  # Heading 2
         (r"^### (.+)$", r"[LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT]"),  # Heading 2
         (r"^#### (.+)$", r"[LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT]"),  # Heading 2
     ]

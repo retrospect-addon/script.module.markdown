@@ -1,3 +1,3 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-__all__ = ["converter"]
+__all__ = ["kodimarkdown"]
