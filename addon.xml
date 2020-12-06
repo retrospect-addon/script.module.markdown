@@ -11,10 +11,10 @@
     <extension point="xbmc.python.module" library="libs" />
 
     <extension point="xbmc.addon.metadata">
-        <summary lang="en_US"></summary>
-        <summary lang="en_GB"></summary>
-        <description lang="en_US"></description>
-        <description lang="en_GB"></description>
+        <summary lang="en_US">Converts Markdown markup to Kodi formatted (label) text.</summary>
+        <summary lang="en_GB">Converts Markdown markup to Kodi formatted (label) text.</summary>
+        <description lang="en_US">This library converts Markdown (https://daringfireball.net/projects/markdown/syntax) to valid Kodi formatted text (https://kodi.wiki/view/Label_Formatting).</description>
+        <description lang="en_GB">This library converts Markdown (https://daringfireball.net/projects/markdown/syntax) to valid Kodi formatted text (https://kodi.wiki/view/Label_Formatting).</description>
         <platform>all</platform>
         <license>GPL-3.0-or-later</license>
         <source>https://github.com/retrospect-addon/script.module.markdown</source>
