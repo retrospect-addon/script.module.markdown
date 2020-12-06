@@ -18,6 +18,14 @@ Heading 1    | `#`          | `[B][LIGHT][UPPERCASE]`
 Heading 2    | `##`         | `[B][LIGHT][CAPITALIZE]`
 Heading 3    | `###`        | `[LIGHT][CAPITALIZE]`
 Heading 4    | `####`       | `[LIGHT][CAPITALIZE]`
+Bold         | `**bold**` or `__bold__` | `[B]bold[/B]`
+Italic       | `*bold*` or `_bold_` | `[I]bold[/I]`
+Unordered List 1 | `- Level 1`  | `• Level 1` 
+Unordered List 1 | `+ Level 1`  | `• Level 1` 
+Unordered List 1 | `* Level 1`  | `• Level 1` 
+Unordered List 2 | `  - Level 2`  | `  - Level 2` 
+Unordered List 2 | `  + Level 2`  | `  - Level 2` 
+Unordered List 2 | `  * Level 2`  | `  - Level 2`
 
 ## Not Supported:
 Description  | Remark

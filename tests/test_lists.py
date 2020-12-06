@@ -60,4 +60,9 @@ class Lists(unittest.TestCase):
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
 
+    def test_list_with_emphasis(self):
+        md_txt = "* This is a *italic* list item"
+        kodi_text = "• This is a [I]italic[/I] list item"
 
+        result = converter.to_kodi(md_txt)
+        self.assertEqual(kodi_text, result)

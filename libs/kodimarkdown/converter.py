@@ -21,10 +21,10 @@ def to_kodi(text):
         (r"^### (.+)$", r"[B][I][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/I][/B]"),  # Heading 3
         (r"^#### (.+)$", r"[B][I][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/I][/B]"),  # Heading 4
 
-        (r"(?:__|\*\*)(.+?)(?:__|\*\*)", r"[B]\1[/B]"),  # Bold
-        (r"(?:_|\*)(.+?)(?:_|\*)", r"[I]\1[/I]"),  # Italic
         (r"^[*+-] (.+?)$", r"• \1"),  # List Level 1
         (r"^  [*+-] (.+?)$", r"  - \1"),  # List Level 2
+        (r"(?:__|\*\*)(.+?)(?:__|\*\*)", r"[B]\1[/B]"),  # Bold
+        (r"(?:_|\*)(.+?)(?:_|\*)", r"[I]\1[/I]"),  # Italic
     ]
 
     result = text

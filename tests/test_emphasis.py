@@ -60,3 +60,10 @@ class Emphasis(unittest.TestCase):
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
+
+    def test_adjecent_emphasis(self):
+        md_txt = "Some *italic**text*"
+        kodi_text = "Some [I]italic[/I][I]text[/I]"
+
+        result = converter.to_kodi(md_txt)
+        self.assertEqual(kodi_text, result)
