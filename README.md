@@ -10,6 +10,8 @@ This simple library for [Kodi](https://kodi.tv) converts basic [Markdown](https:
 ## Supported Markdown Syntax
 The basic Markdown [syntax](https://daringfireball.net/projects/markdown/syntax) is supported. The aim is to eventually also support the majority of the [GitHub flavoured markdown](https://github.github.com/gfm/). A cheatsheet can be found at [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf).
 
+
+### Basic Markdown Syntax
 The following table has an overview of the supported syntax:
 
 Description  | Markdown     | Kodi formatted text
@@ -20,14 +22,30 @@ Heading 3    | `###`        | `[LIGHT][CAPITALIZE]`
 Heading 4    | `####`       | `[LIGHT][CAPITALIZE]`
 Bold         | `**bold**` or `__bold__` | `[B]bold[/B]`
 Italic       | `*bold*` or `_bold_` | `[I]bold[/I]`
-Unordered List 1 | `- Level 1`  | `• Level 1` 
-Unordered List 1 | `+ Level 1`  | `• Level 1` 
-Unordered List 1 | `* Level 1`  | `• Level 1` 
-Unordered List 2 | `  - Level 2`  | `  - Level 2` 
-Unordered List 2 | `  + Level 2`  | `  - Level 2` 
-Unordered List 2 | `  * Level 2`  | `  - Level 2`
-Numbered List 1 | `1. Level 1` | `1. Level 1` 
-Numbered List 2 | `  1. Level 2` | `  1. Level 2`
+
+### Lists
+Ordered and unordered lists are supported. However, ordered lists need to have proper numbering. Output for numbered lists is:
+
+    1. Ordered List Level 1         |    1. Ordered List Level 1
+    2. Ordered List Level 1         |    2. Ordered List Level 1
+      1. Ordered List Level 2       |      1. Ordered List Level 2
+      2. Ordered List Level 2       |      2. Ordered List Level 2
+
+For unordered lists, the chars `*`, `+` and `-` can be used. The Kodi formatted output will be:
+
+    - Unordered Level 1             |    • Ordered List Level 1
+    + Unordered  Level 1            |    • Ordered List Level 1
+    * Unordered Level 1             |    • Ordered List Level 1
+      + Unordered Level 2           |      - Ordered List Level 2
+      - Unordered List Level 2      |      - Ordered List Level 2
+      * Unordered List Level 2      |      - Ordered List Level 2
+
+List styles can be combined:
+
+    - Unordered Level 1             |    • Ordered List Level 1
+    - Unordered Level 1             |    • Ordered List Level 1
+      1. Ordered List Level 2       |      1. Ordered List Level 2
+      2. Ordered List Level 2       |      2. Ordered List Level 2
 
 ## Not Supported:
 Description  | Remark

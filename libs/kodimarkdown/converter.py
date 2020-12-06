@@ -25,6 +25,7 @@ def to_kodi(text):
         (r"^  [*+-] (.+?)$", r"  - \1"),  # Unordered List Level 2
         (r"^(\d+)\. (.+?)$", r"\1. \2"),  # Numbered List Level 2
         (r"^  (\d+)\. (.+?)$", r"  \1. \2"),  # Numbered List Level 2
+
         (r"(?:__|\*\*)(.+?)(?:__|\*\*)", r"[B]\1[/B]"),  # Bold
         (r"(?:_|\*)(.+?)(?:_|\*)", r"[I]\1[/I]"),  # Italic
     ]

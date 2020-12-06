@@ -74,6 +74,15 @@ class Lists(unittest.TestCase):
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
 
+    def test_numbered_list_nested(self):
+        md_txt = "1. This is a numbered list item\n" \
+                 "  1. This is a nested numbered item"
+        kodi_text = "1. This is a numbered list item\n" \
+                    "  1. This is a nested numbered item"
+
+        result = converter.to_kodi(md_txt)
+        self.assertEqual(kodi_text, result)
+
     def test_combined_list(self):
         md_txt = "1. This is a numbered list item\n" \
                  "  + This is a nested unordered item"
