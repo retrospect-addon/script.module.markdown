@@ -26,6 +26,8 @@ Unordered List 1 | `* Level 1`  | `• Level 1`
 Unordered List 2 | `  - Level 2`  | `  - Level 2` 
 Unordered List 2 | `  + Level 2`  | `  - Level 2` 
 Unordered List 2 | `  * Level 2`  | `  - Level 2`
+Numbered List 1 | `1. Level 1` | `1. Level 1` 
+Numbered List 2 | `  1. Level 2` | `  1. Level 2`
 
 ## Not Supported:
 Description  | Remark
