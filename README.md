@@ -16,7 +16,8 @@ Description  | Markdown     | Kodi formatted text
 ------------ | ------------ | -------------
 Heading 1    | `#`          | `[BOLD][LIGHT][UPPERCASE]`
 Heading 2    | `##`         | `[BOLD][LIGHT][CAPITALIZE]`
-Heading 3    | `###` `####` | `[LIGHT][CAPITALIZE]`
+Heading 3    | `###`        | `[LIGHT][CAPITALIZE]`
+Heading 4    | `####`       | `[LIGHT][CAPITALIZE]`
 
 ## Not Supported:
 Description  | Remark
