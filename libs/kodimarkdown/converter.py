@@ -6,6 +6,14 @@ __compiled_regex = {}
 
 
 def to_kodi(text):
+    """ Converts the input Markdown text to Kodi formatted text.
+
+    :param str text: The Markdown text.
+
+    :return: A converted Kodi formated text
+    :rtype: str
+    """
+
     conversions = [
         (r"^# (.+)$", r"[BOLD][LIGHT][UPPERCASE]\1[/UPPERCASE][/LIGHT][/BOLD]"),  # Heading 1
         (r"^## (.+)$", r"[BOLD][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/BOLD]"),  # Heading 2
@@ -13,17 +21,6 @@ def to_kodi(text):
 
     result = text
     for regex, replacement in conversions:
-        compiled = __get_compiled_regex(regex)
-        result = compiled.sub(replacement, result)
+        result = re.sub(regex, replacement, result, flags=re.MULTILINE + re.IGNORECASE)
 
     return result
-
-
-def __get_compiled_regex(regex):
-    compiled_regex = __compiled_regex.get(regex)
-    if compiled_regex:
-        return compiled_regex
-
-    compiled_regex = re.compile(regex, re.MULTILINE + re.IGNORECASE)
-    __compiled_regex[regex] = compiled_regex
-    return compiled_regex
