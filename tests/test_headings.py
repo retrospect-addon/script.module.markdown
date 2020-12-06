@@ -4,7 +4,7 @@ import unittest
 from kodimarkdown import converter
 
 
-class HeadingTest(unittest.TestCase):
+class Headings(unittest.TestCase):
     def test_heading_1_line(self):
         md_txt = "# This is a heading 1"
         kodi_text = "[B][LIGHT][UPPERCASE]This is a heading 1[/UPPERCASE][/LIGHT][/B]"
@@ -61,7 +61,7 @@ class HeadingTest(unittest.TestCase):
 
     def test_heading_3_line(self):
         md_txt = "### This is a heading 3"
-        kodi_text = "[LIGHT][CAPITALIZE]This is a heading 3[/CAPITALIZE][/LIGHT]"
+        kodi_text = "[B][I][LIGHT][CAPITALIZE]This is a heading 3[/CAPITALIZE][/LIGHT][/I][/B]"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
@@ -69,7 +69,7 @@ class HeadingTest(unittest.TestCase):
     def test_heading_3_multiline(self):
         md_txt = "### This is a heading 3\n\n" \
                  "And this is more text"
-        kodi_text = "[LIGHT][CAPITALIZE]This is a heading 3[/CAPITALIZE][/LIGHT]\n\n" \
+        kodi_text = "[B][I][LIGHT][CAPITALIZE]This is a heading 3[/CAPITALIZE][/LIGHT][/I][/B]\n\n" \
                     "And this is more text"
 
         result = converter.to_kodi(md_txt)
@@ -80,7 +80,7 @@ class HeadingTest(unittest.TestCase):
                  "### This is a heading 3\n\n" \
                  "And this is more text"
         kodi_text = "Pre-text\n\n" \
-                    "[LIGHT][CAPITALIZE]This is a heading 3[/CAPITALIZE][/LIGHT]\n\n" \
+                    "[B][I][LIGHT][CAPITALIZE]This is a heading 3[/CAPITALIZE][/LIGHT][/I][/B]\n\n" \
                     "And this is more text"
 
         result = converter.to_kodi(md_txt)
@@ -88,7 +88,7 @@ class HeadingTest(unittest.TestCase):
 
     def test_heading_4_line(self):
         md_txt = "#### This is a heading 4"
-        kodi_text = "[LIGHT][CAPITALIZE]This is a heading 4[/CAPITALIZE][/LIGHT]"
+        kodi_text = "[B][I][LIGHT][CAPITALIZE]This is a heading 4[/CAPITALIZE][/LIGHT][/I][/B]"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
@@ -96,7 +96,7 @@ class HeadingTest(unittest.TestCase):
     def test_heading_4_multiline(self):
         md_txt = "#### This is a heading 4\n\n" \
                  "And this is more text"
-        kodi_text = "[LIGHT][CAPITALIZE]This is a heading 4[/CAPITALIZE][/LIGHT]\n\n" \
+        kodi_text = "[B][I][LIGHT][CAPITALIZE]This is a heading 4[/CAPITALIZE][/LIGHT][/I][/B]\n\n" \
                     "And this is more text"
 
         result = converter.to_kodi(md_txt)
@@ -107,7 +107,7 @@ class HeadingTest(unittest.TestCase):
                  "#### This is a heading 4\n\n" \
                  "And this is more text"
         kodi_text = "Pre-text\n\n" \
-                    "[LIGHT][CAPITALIZE]This is a heading 4[/CAPITALIZE][/LIGHT]\n\n" \
+                    "[B][I][LIGHT][CAPITALIZE]This is a heading 4[/CAPITALIZE][/LIGHT][/I][/B]\n\n" \
                     "And this is more text"
 
         result = converter.to_kodi(md_txt)
@@ -117,10 +117,12 @@ class HeadingTest(unittest.TestCase):
         md_txt = "# Main heading\n\n" \
                  "## Second heading\n\n" \
                  "### Third heading\n\n" \
+                 "#### Fourth heading\n\n" \
                  "And this is more text"
         kodi_text = "[B][LIGHT][UPPERCASE]Main heading[/UPPERCASE][/LIGHT][/B]\n\n" \
                     "[B][LIGHT][CAPITALIZE]Second heading[/CAPITALIZE][/LIGHT][/B]\n\n" \
-                    "[LIGHT][CAPITALIZE]Third heading[/CAPITALIZE][/LIGHT]\n\n" \
+                    "[B][I][LIGHT][CAPITALIZE]Third heading[/CAPITALIZE][/LIGHT][/I][/B]\n\n" \
+                    "[B][I][LIGHT][CAPITALIZE]Fourth heading[/CAPITALIZE][/LIGHT][/I][/B]\n\n" \
                     "And this is more text"
 
         result = converter.to_kodi(md_txt)
