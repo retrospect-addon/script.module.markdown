@@ -28,6 +28,9 @@ def to_kodi(text):
 
         (r"(?:__|\*\*)(.+?)(?:__|\*\*)", r"[B]\1[/B]"),  # Bold
         (r"(?:_|\*)(.+?)(?:_|\*)", r"[I]\1[/I]"),  # Italic
+
+        (r"\!\[(.+)]\([^)]+\)", r"[COLOR yellow][\1][/COLOR]"),  # links
+        (r"\[(.+)]\(([^)]+)\)", r"[COLOR blue]\1[/COLOR]"),  # links
     ]
 
     result = text

@@ -22,6 +22,8 @@ Heading 3    | `###`        | `[LIGHT][CAPITALIZE]`
 Heading 4    | `####`       | `[LIGHT][CAPITALIZE]`
 Bold         | `**bold**` or `__bold__` | `[B]bold[/B]`
 Italic       | `*bold*` or `_bold_` | `[I]bold[/I]`
+Link         | `[text](url)` | `[COLOR blue]text[/COLOR]`
+Image        | `![text](url)` | `[COLOR yellow][text][/COLOR]`
 
 ### Lists
 Ordered and unordered lists are supported. However, ordered lists need to have proper numbering. Output for numbered lists is:

@@ -1,19 +1,11 @@
 # coding: utf-8
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import requests
+
 import xbmcgui
 from libs.kodimarkdown import converter
-
-text = "# Main heading\n\n" \
-       "## Second heading\n\n" \
-       "### Third heading\n\n" \
-       "#### Fourth heading\n\n" \
-       "And this is more __bold__ text and _italic_ text\n\n" \
-       "And this is more **bold** text and *italic* text\n\n\n" \
-       "* test\n" \
-       "* test2 &bull\n" \
-       "  * Nested one\n" \
-       "Yep"
-xbmcgui.Dialog().textviewer("Test", text)
-converted = converter.to_kodi(text)
+markdown = requests.get("https://raw.githubusercontent.com/wiki/retrospect-addon/plugin.video.retrospect/Home.md", verify=False).text
+xbmcgui.Dialog().textviewer("Test", markdown)
+converted = converter.to_kodi(markdown)
 xbmcgui.Dialog().textviewer("Test", converted)
