@@ -16,10 +16,10 @@ def to_kodi(text):
     """
 
     conversions = [
-        (r"^# (.+)$", r"[B][LIGHT][UPPERCASE]\1[/UPPERCASE][/LIGHT][/B]"),  # Heading 1
-        (r"^## (.+)$", r"[B][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/B]"),  # Heading 2
-        (r"^### (.+)$", r"[B][I][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/I][/B]"),  # Heading 3
-        (r"^#### (.+)$", r"[B][I][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/I][/B]"),  # Heading 4
+        (r"^# (.+?)( [#]+)? *$", r"[B][LIGHT][UPPERCASE]\1[/UPPERCASE][/LIGHT][/B]"),  # Heading 1
+        (r"^## (.+?)( [#]+)? *$", r"[B][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/B]"),  # Heading 2
+        (r"^### (.+?)( [#]+)? *$", r"[B][I][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/I][/B]"),  # Heading 3
+        (r"^[#]{4,} (.+?)( [#]+)? *$", r"[B][I][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/I][/B]"),  # Heading 4
 
         (r"^[*+-] (.+?)$", r"• \1"),  # Unordered List Level 1
         (r"^  [*+-] (.+?)$", r"  - \1"),  # Unordered List Level 2
