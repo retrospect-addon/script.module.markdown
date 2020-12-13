@@ -16,25 +16,35 @@ def to_kodi(text):
     """
 
     conversions = [
-        (r"^# (.+?)( [#]+)? *$", r"[B][LIGHT][UPPERCASE]\1[/UPPERCASE][/LIGHT][/B]"),  # Heading 1
-        (r"^## (.+?)( [#]+)? *$", r"[B][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/B]"),  # Heading 2
-        (r"^### (.+?)( [#]+)? *$", r"[B][I][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/I][/B]"),  # Heading 3
-        (r"^[#]{4,} (.+?)( [#]+)? *$", r"[B][I][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/I][/B]"),  # Heading 4
+        (r"^# (.+?)( [#]+)? *$", r"[B][LIGHT][UPPERCASE]\1[/UPPERCASE][/LIGHT][/B]", False),  # Heading 1
+        (r"^## (.+?)( [#]+)? *$", r"[B][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/B]", False),  # Heading 2
+        (r"^### (.+?)( [#]+)? *$", r"[B][I][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/I][/B]", False),  # Heading 3
+        (r"^[#]{4,} (.+?)( [#]+)? *$", r"[B][I][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/I][/B]", False),  # Heading 4
 
-        (r"^[*+-] (.+?)$", r"• \1"),  # Unordered List Level 1
-        (r"^  [*+-] (.+?)$", r"  - \1"),  # Unordered List Level 2
-        (r"^(\d+)\. (.+?)$", r"\1. \2"),  # Numbered List Level 2
-        (r"^  (\d+)\. (.+?)$", r"  \1. \2"),  # Numbered List Level 2
+        (r"^[*+-] (.+?)$", r"• \1", False),  # Unordered List Level 1
+        (r"^  [*+-] (.+?)$", r"  - \1", False),  # Unordered List Level 2
+        (r"^(\d+)\. (.+?)$", r"\1. \2", False),  # Numbered List Level 2
+        (r"^  (\d+)\. (.+?)$", r"  \1. \2", False),  # Numbered List Level 2
 
-        (r"(?:__|\*\*)(.+?)(?:__|\*\*)", r"[B]\1[/B]"),  # Bold
-        (r"(?:_|\*)(.+?)(?:_|\*)", r"[I]\1[/I]"),  # Italic
+        (r"(?:__|\*\*)(.+?)(?:__|\*\*)", r"[B]\1[/B]", True),  # Bold
+        (r"(?:_|\*)(.+?)(?:_|\*)", r"[I]\1[/I]", True),  # Italic
 
-        (r"\!\[([^]]+)]\([^)]+\)", r"[COLOR yellow][\1][/COLOR]"),  # Images
-        (r"\[(.+)]\(([^)]+)\)", r"[COLOR blue]\1[/COLOR]"),  # Links
+        (r"\!\[([^]]+)]\([^)]+\)", r"[COLOR yellow][\1][/COLOR]", False),  # Images
+        (r"\[(.+)]\(([^)]+)\)", r"[COLOR blue]\1[/COLOR]", False),  # Links
     ]
 
     result = text
-    for regex, replacement in conversions:
-        result = re.sub(regex, replacement, result, flags=re.MULTILINE + re.IGNORECASE)
+    for regex, replacement, multi_line in conversions:
+        if multi_line:
+            result = re.sub(regex, lambda m: replace_multi_line(m, replacement), result,
+                            flags=re.MULTILINE + re.IGNORECASE + re.DOTALL)
+        else:
+            result = re.sub(regex, replacement, result,
+                            flags=re.MULTILINE + re.IGNORECASE)
 
     return result
+
+
+def replace_multi_line(m, replacement):
+    match = m.group().replace("\n", " ")
+    return m.re.sub(replacement, match)

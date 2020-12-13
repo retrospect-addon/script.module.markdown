@@ -12,6 +12,18 @@ class Emphasis(unittest.TestCase):
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
 
+    def test_bold_stars_multiline(self):
+        md_txt = "Just start text\n" \
+                 "\n" \
+                 "Some **bo\n" \
+                 "ld** text"
+        kodi_text = "Just start text\n" \
+                    "\n" \
+                    "Some [B]bo ld[/B] text"
+
+        result = converter.to_kodi(md_txt)
+        self.assertEqual(kodi_text, result)
+
     def test_bold_underscores(self):
         md_txt = "Some __bold__ text"
         kodi_text = "Some [B]bold[/B] text"
@@ -36,6 +48,18 @@ class Emphasis(unittest.TestCase):
     def test_italic_double(self):
         md_txt = "Some *italic* text and some more *italic* text"
         kodi_text = "Some [I]italic[/I] text and some more [I]italic[/I] text"
+
+        result = converter.to_kodi(md_txt)
+        self.assertEqual(kodi_text, result)
+
+    def test_italic_multiline(self):
+        md_txt = "Just start text\n" \
+                 "\n" \
+                 "Some _bo\n" \
+                 "ld_ text"
+        kodi_text = "Just start text\n" \
+                    "\n" \
+                    "Some [I]bo ld[/I] text"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)

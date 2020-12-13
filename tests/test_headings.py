@@ -33,11 +33,10 @@ class Headings(unittest.TestCase):
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
 
-
     def test_heading_1_multiline(self):
-        md_txt = "# This is a heading 1\n\n" \
+        md_txt = "# This is a heading 1\n" \
                  "And this is more text"
-        kodi_text = "[B][LIGHT][UPPERCASE]This is a heading 1[/UPPERCASE][/LIGHT][/B]\n\n" \
+        kodi_text = "[B][LIGHT][UPPERCASE]This is a heading 1[/UPPERCASE][/LIGHT][/B]\n" \
                     "And this is more text"
 
         result = converter.to_kodi(md_txt)
