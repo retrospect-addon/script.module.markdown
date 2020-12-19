@@ -34,13 +34,17 @@ def to_kodi(text):
     ]
 
     result = text
+    # debug_count = 0
     for regex, replacement, multi_line in conversions:
+        # debug_count += 1
+        # replacement = "{0}>{1}<{0}".format(debug_count, replacement)
         if multi_line:
             result = re.sub(regex, lambda m: replace_multi_line(m, replacement), result,
                             flags=re.MULTILINE + re.IGNORECASE + re.DOTALL)
         else:
             result = re.sub(regex, replacement, result,
                             flags=re.MULTILINE + re.IGNORECASE)
+
 
     return result
 
