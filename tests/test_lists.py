@@ -79,6 +79,27 @@ class Lists(unittest.TestCase):
                  "  1. This is a nested numbered item"
         kodi_text = "1. This is a numbered list item\n" \
                     "  1. This is a nested numbered item"
+        result = converter.to_kodi(md_txt)
+        self.assertEqual(kodi_text, result)
+
+    def test_numbered_list_nested_multiline(self):
+        md_txt = "1. This is a numbered\n" \
+                 "list\n" \
+                 "item\n" \
+                 "  1. This is a nested numbered item"
+        kodi_text = "1. This is a numbered list item\n" \
+                    "  1. This is a nested numbered item"
+
+        result = converter.to_kodi(md_txt)
+        self.assertEqual(kodi_text, result)
+
+    def test_numbered_list_nested_multiline_level2(self):
+        md_txt = "1. This is a numbered list item\n" \
+                 "  1. This is a nested\n" \
+                 "numbered\n" \
+                 "item"
+        kodi_text = "1. This is a numbered list item\n" \
+                    "  1. This is a nested numbered item"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)

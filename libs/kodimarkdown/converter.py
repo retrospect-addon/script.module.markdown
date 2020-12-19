@@ -23,8 +23,8 @@ def to_kodi(text):
 
         (r"^[*+-] (.+?)$", r"• \1", False),  # Unordered List Level 1
         (r"^  [*+-] (.+?)$", r"  - \1", False),  # Unordered List Level 2
-        (r"^(\d+)\. (.+?)$", r"\1. \2", False),  # Numbered List Level 2
-        (r"^  (\d+)\. (.+?)$", r"  \1. \2", False),  # Numbered List Level 2
+        (r"^(\d+)\. (.+?)(?=[\n]\s*((\d+)\.||[*+-]) |[\n]{2}$|\Z)", r"\1. \2", True),  # Numbered List Level 2
+        (r"^  (\d+)\. (.+?)(?=[\n]\s*((\d+)\.||[*+-]) |[\n]{2}$|\Z)", r"  \1. \2", True),  # Numbered List Level 2
 
         (r"(?:__|\*\*)(.+?)(?:__|\*\*)", r"[B]\1[/B]", True),  # Bold
         (r"(?:_|\*)(.+?)(?:_|\*)", r"[I]\1[/I]", True),  # Italic
