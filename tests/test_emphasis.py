@@ -91,3 +91,10 @@ class Emphasis(unittest.TestCase):
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
+
+    def test_just_a_star(self):
+        md_txt = "1. From that recovery image, you will need the Widevine files located in /opt/google/chrome/libwidevinecdm*.so.\n1. These files need to be copied to the `<kodi-profile>/cdm` folder.\n\n_"
+        kodi_text = "1. From that recovery image, you will need the Widevine files located in /opt/google/chrome/libwidevinecdm*.so.\n1. These files need to be copied to the `<kodi-profile>/cdm` folder.\n\n_"
+
+        result = converter.to_kodi(md_txt)
+        self.assertEqual(kodi_text, result)

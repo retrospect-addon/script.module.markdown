@@ -36,6 +36,16 @@ class Lists(unittest.TestCase):
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
 
+    def test_bullet_list_multiple_multiline(self):
+        md_txt = "* This is a list\n" \
+                 "item\n" \
+                 "* Second item"
+        kodi_text = "• This is a list item\n" \
+                    "• Second item"
+
+        result = converter.to_kodi(md_txt)
+        self.assertEqual(kodi_text, result)
+
     def test_bullet_nested(self):
         md_txt = "* This is a list item\n" \
                  "  + Second item"
@@ -50,11 +60,13 @@ class Lists(unittest.TestCase):
                  "* This is a list item\n" \
                  "* Second item\n" \
                  "  - Third item\n" \
+                 "\n" \
                  "And more text"
         kodi_text = "Just a list:\n" \
                     "• This is a list item\n" \
                     "• Second item\n" \
                     "  - Third item\n" \
+                    "\n" \
                     "And more text"
 
         result = converter.to_kodi(md_txt)
