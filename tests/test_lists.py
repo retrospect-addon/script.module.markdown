@@ -48,9 +48,11 @@ class Lists(unittest.TestCase):
 
     def test_bullet_nested(self):
         md_txt = "* This is a list item\n" \
-                 "  + Second item"
+                 "  + Second item\n" \
+                 "    + Second item"
         kodi_text = " • This is a list item\n" \
-                    "   - Second item"
+                    "   - Second item\n" \
+                    "     - Second item"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
@@ -88,9 +90,11 @@ class Lists(unittest.TestCase):
 
     def test_numbered_list_nested(self):
         md_txt = "1. This is a numbered list item\n" \
-                 "  1. This is a nested numbered item"
+                 "  1. This is a nested numbered item\n" \
+                 "    1. This is a nested numbered item"
         kodi_text = " 1. This is a numbered list item\n" \
-                    "   1. This is a nested numbered item"
+                    "   1. This is a nested numbered item\n" \
+                    "     1. This is a nested numbered item"
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
 

@@ -27,11 +27,15 @@ def to_kodi(text):
 
         (r"^[*+-] ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r" • \1", True),  # Unordered List Level 1
         (r"^  [*+-] ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r"   - \1", True),  # Unordered List Level 2
+        (r"^    [*+-] ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r"     - \1", True),  # Unordered List Level 2
         (r"^(\d+)\. ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r" \1. \2", True),  # Numbered List Level 1
         (r"^  (\d+)\. ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r"   \1. \2", True),  # Numbered List Level 2
+        (r"^    (\d+)\. ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r"     \1. \2", True),  # Numbered List Level 3
 
-        (r"(__|\*\*)((?!\1)(?:.|.\n)+?)(__|\*\*)", r"[B]\2[/B]", True),  # Italic
-        (r"(_|\*)((?!\1)(?:.|.\n)+?)(_|\*)", r"[I]\2[/I]", True),  # Bold
+        (r"(__|\*\*)((?!\1)(?:.|.\n)+?)(__|\*\*)", r"[B]\2[/B]", True),  # Bold
+        (r"(_|\*)((?!\1)(?:.|.\n)+?)(_|\*)", r"[I]\2[/I]", True),  # Italic
+
+        (r"(^[^[ \t\n](?:.+\n)+(?:[^[ \t\n].+))(?=(\n){2}|\Z)", r"\1", True)
     ]
 
     result = text
@@ -52,5 +56,5 @@ def to_kodi(text):
 
 
 def replace_multi_line(m, replacement):
-    match = m.group().replace("\n", " ")
-    return m.re.sub(replacement, match)
+    match = m.group()
+    return m.re.sub(replacement, match).replace("\n", " ")
