@@ -8,21 +8,21 @@ from kodimarkdown import converter
 class Lists(unittest.TestCase):
     def test_bullet_list(self):
         md_txt = "* This is a list item"
-        kodi_text = " • This is a list item"
+        kodi_text = " - This is a list item"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
 
     def test_plus_list(self):
         md_txt = "+ This is a list item"
-        kodi_text = " • This is a list item"
+        kodi_text = " + This is a list item"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
 
     def test_dash_list(self):
         md_txt = "- This is a list item"
-        kodi_text = " • This is a list item"
+        kodi_text = " - This is a list item"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
@@ -30,8 +30,8 @@ class Lists(unittest.TestCase):
     def test_bullet_list_multiple(self):
         md_txt = "* This is a list item\n" \
                  "* Second item"
-        kodi_text = " • This is a list item\n" \
-                    " • Second item"
+        kodi_text = " - This is a list item\n" \
+                    " - Second item"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
@@ -40,8 +40,8 @@ class Lists(unittest.TestCase):
         md_txt = "* This is a list\n" \
                  "item\n" \
                  "* Second item"
-        kodi_text = " • This is a list item\n" \
-                    " • Second item"
+        kodi_text = " - This is a list item\n" \
+                    " - Second item"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
@@ -50,9 +50,9 @@ class Lists(unittest.TestCase):
         md_txt = "* This is a list item\n" \
                  "  + Second item\n" \
                  "    + Second item"
-        kodi_text = " • This is a list item\n" \
-                    "   - Second item\n" \
-                    "     - Second item"
+        kodi_text = " - This is a list item\n" \
+                    "   + Second item\n" \
+                    "     + Second item"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
@@ -65,8 +65,8 @@ class Lists(unittest.TestCase):
                  "\n" \
                  "And more text"
         kodi_text = "Just a list:\n" \
-                    " • This is a list item\n" \
-                    " • Second item\n" \
+                    " - This is a list item\n" \
+                    " - Second item\n" \
                     "   - Third item\n" \
                     "\n" \
                     "And more text"
@@ -76,7 +76,7 @@ class Lists(unittest.TestCase):
 
     def test_list_with_emphasis(self):
         md_txt = "* This is a *italic* list item"
-        kodi_text = " • This is a [I]italic[/I] list item"
+        kodi_text = " - This is a [I]italic[/I] list item"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)
@@ -124,7 +124,7 @@ class Lists(unittest.TestCase):
         md_txt = "1. This is a numbered list item\n" \
                  "  + This is a nested unordered item"
         kodi_text = " 1. This is a numbered list item\n" \
-                    "   - This is a nested unordered item"
+                    "   + This is a nested unordered item"
 
         result = converter.to_kodi(md_txt)
         self.assertEqual(kodi_text, result)

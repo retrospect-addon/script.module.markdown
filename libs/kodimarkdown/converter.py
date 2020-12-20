@@ -25,12 +25,10 @@ def to_kodi(text):
         (r"^### (.+?)( [#]+)? *$", r"[B][I][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/I][/B]", False),  # Heading 3
         (r"^[#]{4,} (.+?)( [#]+)? *$", r"[B][I][LIGHT][CAPITALIZE]\1[/CAPITALIZE][/LIGHT][/I][/B]", False),  # Heading 4
 
-        (r"^[*+-] ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r" • \1", True),  # Unordered List Level 1
-        (r"^  [*+-] ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r"   - \1", True),  # Unordered List Level 2
-        (r"^    [*+-] ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r"     - \1", True),  # Unordered List Level 2
-        (r"^(\d+)\. ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r" \1. \2", True),  # Numbered List Level 1
-        (r"^  (\d+)\. ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r"   \1. \2", True),  # Numbered List Level 2
-        (r"^    (\d+)\. ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r"     \1. \2", True),  # Numbered List Level 3
+        # Apparently • won't match inside [], so we will use - for now.
+        (r"^((?:  ){0,2})([+-]) ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r" \1\2 \3", True),  # Unordered List Level 1,2,3
+        (r"^((?:  ){0,2})(\*) ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r" \1- \3", True),  # Unordered List Level 1 with *
+        (r"^((?:  ){0,2})(\d+)\. ((?:.|.\n)+?)(?=\s*\d+\. |\s*[*+-]|\n{2}|\Z)", r" \1\2. \3", True),  # Numbered List Level 1,2,3
 
         (r"(__|\*\*)((?!\1)(?:.|.\n)+?)(__|\*\*)", r"[B]\2[/B]", True),  # Bold
         (r"(_|\*)((?!\1)(?:.|.\n)+?)(_|\*)", r"[I]\2[/I]", True),  # Italic
